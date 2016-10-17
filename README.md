@@ -9,7 +9,7 @@ A simple Knockout binding for Datatables.
 
 A [DataTables options object](https://datatables.net/reference/option/) must be passed to the binding with 3 required properties: 
 
-  1. ["data"](https://datatables.net/reference/option/data) property as a json or knockout object array
+  1. ["data"](https://datatables.net/reference/option/data) property as a json array or knockout object array
   
   2. ["columns"](https://datatables.net/reference/option/columns) property, each containing a ["title"](https://datatables.net/reference/option/columns.title) and ["data"](https://datatables.net/reference/option/columns.data) and,
   
