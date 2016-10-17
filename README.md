@@ -1,11 +1,11 @@
 # knockout-datatables
-A simple Knockout binding for Datatables. This project is not under active development and has not been extensively tested.
+A simple Knockout binding for Datatables.
 
 ## Dependencies
 [JQuery](https://jquery.com/download/), [DataTables](https://datatables.net/download/index) and [Knockout](http://knockoutjs.com/downloads/index.html).
 
 ## Usage
-Examples to be added
+[Example JSFiddle](https://jsfiddle.net/kL6k54ex/22/)
 
 A [DataTables options object](https://datatables.net/reference/option/) must be passed to the binding with 3 required properties: 
 
