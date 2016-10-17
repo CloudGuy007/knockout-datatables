@@ -14,20 +14,20 @@ ko.bindingHandlers.datatable = {
 
 		var dtAPI = $(element).DataTable(options);
 
-		var dataAdded = (data) => { dtAPI.row.add(ko.toJS(data)).draw(); };
-		var dataRemoved = (data) => { 
+		var dataAdded = function(data) { dtAPI.row.add(ko.toJS(data)).draw(); };
+		var dataRemoved = function(data) { 
 			var key = ko.toJS(data)[uniqueKey];
 			var rowIndex = dtAPI.column(0).data().indexOf(ko.toJS(data)[uniqueKey]);  
 
 			//if a datatable is re-sorted rowLoop is assigned the new index and the index stays the same
-			dtAPI.rows().every((index, tableLoop, rowLoop) => {
+			dtAPI.rows().every(function(index, tableLoop, rowLoop) {
 				if (rowIndex == rowLoop) dtAPI.row(index).remove().draw();
 			});
 		}
 
 		var oldData;
-		var fnBeforeChange = (dataBeforeChange) => { oldData = dataBeforeChange.slice(0);  };//deep copy to prevent updating oldData
-		var fnAfterChange = (dataAfterChange) => { 
+		var fnBeforeChange = function(dataBeforeChange) { oldData = dataBeforeChange.slice(0);  };//deep copy to prevent updating oldData
+		var fnAfterChange = function(dataAfterChange) { 
 			var differences = ko.utils.compareArrays(oldData, dataAfterChange);
 			differences.forEach(function(difference) {
 				if (difference.status === 'added') dataAdded(difference.value);
