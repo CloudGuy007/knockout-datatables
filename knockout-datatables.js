@@ -10,7 +10,7 @@ ko.bindingHandlers.datatable = {
 		if (options.ajax) throw "Knockout-Datatables does not handle ajax. Please retreive and persist data externally.";
 
 		var uniqueKey = options.uniqueKey;
-		options.columns.unshift({ data: uniqueKey });//add a hidden column to find the row using the uniqueKey
+		options.columns.unshift({ data: uniqueKey, visible: false });//add a hidden column to find the row using the uniqueKey
 
 		var dtAPI = $(element).DataTable(options);
 
