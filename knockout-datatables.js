@@ -27,6 +27,14 @@ ko.bindingHandlers.datatable = {
 			ko.applyBindingsToDescendants(bindingContext.createChildContext(vm), row);
 			//TODO: maybe delete vm once it is bound to row -- save some space?
 
+			ko.computed(function() { return ko.toJS(vm); })//allows us to subscribe to the knockout object
+			  .subscribe(function() { 
+			  	dtAPI.row(row).data(ko.toJS(vm)).invalidate().draw(); //update row data and invalidate existing data
+
+			  	ko.cleanNode(row); //TODO: investigate more - the row is still bound to ko but the bindings don't work correctly - so rebind for now
+			  	ko.applyBindingsToDescendants(bindingContext.createChildContext(vm), row); 
+			  });
+
 			if (createdRow) createdRow(row, data, index); //call user inputted function
 		}
 		options.createdRow = rebindChildren;
