@@ -25,7 +25,6 @@ ko.bindingHandlers.datatable = {
 		function rebindChildren(row, data, index) {
 			var vm = keyToVMMap[data[uniqueKey]];
 			ko.applyBindingsToDescendants(bindingContext.createChildContext(vm), row);
-			//TODO: maybe delete vm once it is bound to row -- save some space?
 
 			ko.computed(function() { return ko.toJS(vm); })//allows us to subscribe to the knockout object
 			  .subscribe(function() { 
